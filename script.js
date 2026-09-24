@@ -37,39 +37,8 @@
             tab.addEventListener('click', () => activateTestimonial(tab));
         });
 
-        // Section 8 Click to show client comment
-        const sec8Cards = document.querySelectorAll('.sec8_card');
-        sec8Cards.forEach(card => {
-            const btn = card.querySelector('.show-comment-btn');
-            const commentBox = card.querySelector('.card-comment-box');
-            if (btn && commentBox) {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const isOpen = commentBox.classList.contains('open');
 
-                    // Close any currently opened comment boxes
-                    document.querySelectorAll('.card-comment-box.open').forEach(box => {
-                        box.classList.remove('open');
-                        const pBtn = box.closest('.sec8_card')?.querySelector('.show-comment-btn');
-                        if (pBtn) {
-                            pBtn.setAttribute('aria-expanded', 'false');
-                            pBtn.querySelector('.btn-text').textContent = '💬 View Client Feedback';
-                            pBtn.querySelector('.btn-arrow').textContent = '▼';
-                        }
-                    });
-
-                    // Toggle current box
-                    if (!isOpen) {
-                        commentBox.classList.add('open');
-                        btn.setAttribute('aria-expanded', 'true');
-                        btn.querySelector('.btn-text').textContent = '✕ Hide Feedback';
-                        btn.querySelector('.btn-arrow').textContent = '▲';
-                    }
-                });
-            }
-        });
-
-        // Enable progressive scroll animations
+        // // Enable progressive scroll animations
         document.documentElement.classList.add('js-reveal');
         
         const revealElements = document.querySelectorAll('.reveal');
@@ -107,19 +76,8 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-        
-
+        //========================================================
+        // Book appoinment alert open
 
          function showAlert() {
             document.getElementById("customAlert").style.display = "block";
@@ -140,7 +98,8 @@ const doctors = [
                 spl: [
                     "Cardiology",
                     "General Medicine",
-                    "Internal Medicine"
+                    "Internal Medicine",
+                    "Neurosurgery"
                 ]
             },
             {
@@ -386,7 +345,7 @@ function renderCalendar() {
                 today.getDate()
             );
         const isPast =
-            date < todayDate;
+            date <= todayDate;
         const isToday =
             date.getTime() ===
             todayDate.getTime();
