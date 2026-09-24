@@ -85,6 +85,7 @@ a {
    ========================================================================== */
 .header {
     display: flex;
+    
     justify-content: space-between;
     align-items: center;
     padding: 24px clamp(20px, 5vw, 60px);
@@ -581,6 +582,7 @@ a {
     object-fit: cover;
     border: 2px solid var(--color-primary-mint);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .author-details p {
@@ -689,9 +691,6 @@ a {
     transition: transform 0.3s ease;
 }
 
-.sec8_card:hover .card-icon {
-    transform: scale(1.15);
-}
 
 .sec8_card h3 {
     font-size: clamp(1.35rem, 2vw, 1.75rem);
@@ -711,6 +710,70 @@ a {
     font-size: 0.95rem;
     color: var(--color-text-muted);
     line-height: 1.55;
+}
+
+.show-comment-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background-color: rgba(46, 79, 33, 0.08);
+    color: var(--color-primary-dark);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: var(--transition-base);
+    border: 1px solid rgba(46, 79, 33, 0.15);
+    width: fit-content;
+}
+
+.show-comment-btn:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(46, 79, 33, 0.15);
+}
+
+.show-comment-btn .btn-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.card-comment-box {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.35s ease, margin 0.35s ease, padding 0.35s ease;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    padding: 0 16px;
+    border-left: 3px solid var(--color-primary-dark);
+    box-shadow: 0 4px 14px rgba(46, 79, 33, 0.08);
+    margin-top: 0;
+}
+
+.card-comment-box.open {
+    max-height: 220px;
+    opacity: 1;
+    padding: 14px 16px;
+    margin-top: 12px;
+}
+
+.card-comment-box .comment-text {
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--color-primary-dark);
+    line-height: 1.45;
+    margin-bottom: 6px;
+}
+
+.card-comment-box .comment-author {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
 }
 
 /* ==========================================================================
@@ -927,6 +990,23 @@ footer {
 .copyright {
     white-space: nowrap;
 }
+
+#customAlert {
+    display: none;
+    margin-top: 20px;
+    background-color: white;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        }
+  .dr{
+    display: flex;
+  }
 
 /* ==========================================================================
    Responsive Media Queries
@@ -1189,3 +1269,220 @@ footer {
         font-size: 1.1rem;
     }
 }
+
+
+
+
+.appointment-card {
+            width: 420px;
+            max-width: 100%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        }
+        .appointment-card h2{
+            margin: 0;
+            color: #0062DD;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* ==============================
+           DOCTOR + DEPARTMENT
+        ============================== */
+        .doctor-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 380px;
+
+        }
+        .doctor-box {
+            padding: 5px;
+            border-right: 1px solid #ddd;
+        }
+        .specialization-box {
+            padding: 5px;
+            width: 150px;
+        }
+        .doctor-box h3,
+        .specialization-box h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #0062DD;
+        }
+        /* DOCTOR DROPDOWN */
+        #doctorSelect {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        /* DEPARTMENT */
+        .specialization-list {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .spl-btn {
+            width: 100%;
+            padding: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .spl-btn:hover {
+            border-color: #2563eb;
+        }
+        .spl-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        .no-spl {
+            color: #999;
+            font-size: 12px;
+        }
+        /* ==============================
+           SELECTED DETAILS
+        ============================== */
+        .selected-details {
+            margin-top: 15px;
+            padding: 12px;
+            background: #eef4ff;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        .selected-details strong {
+            color: #2563eb;
+        }
+        /* ==============================
+           CALENDAR + TIME
+        ============================== */
+        .booking-section {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 410px;
+        }
+        /* CALENDAR */
+        .calendar-box {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .calendar-header button {
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calendar-header button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #monthYear {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 10px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+        .day {
+            height: 20px;
+            width: 20px;
+            border: none;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .day:hover:not(:disabled) {
+            background: #e8f0ff;
+        }
+        .day:disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        .day.today {
+            border: 1px solid #2563eb;
+        }
+        .day.selected {
+            background: #2563eb;
+            color: white;
+        }
+        /* ==============================
+           TIME DROPDOWN
+        ============================== */
+        .time-box {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 5px;
+            width: 150px;
+        }
+        .time-box h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        #timeSelect {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            background: white;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        /* ==============================
+           BOOK BUTTON
+        ============================== */
+        .book-btn {
+            width: 100%;
+            margin-top: 5px;
+            padding: 5px;
+            border: none;
+            border-radius: 8px;
+            background: #0062DD;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            background: #128238;
+        }
+        @media screen and (max-width: 500px) {
+            .booking-section {
+                grid-template-columns: 1fr;
+            }
+        }

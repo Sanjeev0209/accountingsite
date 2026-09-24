@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noble Finances - Financial Clarity You Can Trust</title>
+   
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +18,7 @@
         <nav class="topright">
             <a href="#services" class="nav-link">Services</a>
             <button class="headerbtn" type="button">
-                Book <span>an appointment</span>
+                Book <span onclick="showAlert()">an appointment</span>
             </button>
         </nav>
     </header>
@@ -106,21 +107,21 @@
             </div>
             <div class="section7-container">
                 <div class="container1" role="tablist">
-                    <button class="testimonial-tab active" data-quote="&quot;Managing my taxes as a freelancer used to be overwhelming, but Noble Finance made it effortless.&quot;" data-author="Taylor M., 28 years old" data-subtext="Graphic Designer • Ontario, Canada" type="button">
+                    <button class="testimonial-tab active" data-quote="&quot;Managing my taxes as a freelancer used to be overwhelming, but Noble Finance made it effortless.&quot;" data-author="Taylor M., 28 years old" data-subtext="Graphic Designer • Ontario, Canada" data-avatar="img/sanju.jpg" type="button">
                         <div class="conta1">
                             <h3>Graphic Designer</h3>
                             <p>Ontario, Canada</p>
                         </div>
                     </button>
                     
-                    <button class="testimonial-tab" data-quote="&quot;Their commercial audit and tax planning saved our studio thousands of dollars. The best financial team we've worked with.&quot;" data-author="Marcus K., 35 years old" data-subtext="Commercial Photographer • Ontario, Canada" type="button">
+                    <button class="testimonial-tab" data-quote="&quot;Their commercial audit and tax planning saved our studio thousands of dollars. The best financial team we've worked with.&quot;" data-author="Marcus K., 35 years old" data-subtext="Commercial Photographer • Ontario, Canada" data-avatar="img/itachi.jpg" type="button">
                         <div class="conta1">
                             <h3>Commercial Photographer</h3>
                             <p>Ontario, Canada</p>
                         </div>
                     </button>
                     
-                    <button class="testimonial-tab" data-quote="&quot;From monthly bookkeeping to end-of-year tax returns, Noble Finances gives me total peace of mind to focus on my clients.&quot;" data-author="Sarah L., 31 years old" data-subtext="Stylist • Austin, Texas" type="button">
+                    <button class="testimonial-tab" data-quote="&quot;From monthly bookkeeping to end-of-year tax returns, Noble Finances gives me total peace of mind to focus on my clients.&quot;" data-author="Sarah L., 31 years old" data-subtext="Stylist • Austin, Texas" data-avatar="img/madhara.jpg" type="button">
                         <div class="conta1">
                             <h3>Stylist</h3>
                             <p>Austin, Texas</p>
@@ -130,7 +131,7 @@
                 <div class="container2">
                     <h2 id="testimonial-quote">"Managing my taxes as a freelancer used to be overwhelming, but Noble Finance made it effortless."</h2>
                     <div class="testimonial-author">
-                        <img src="img/volodymyr-hryshchenko-L0oJ4Dlfyuo-unsplash.jpg" alt="Client avatar" class="client-avatar">
+                        <img src="img/sanju.jpg" alt="Client avatar" class="client-avatar">
                         <div class="author-details">
                             <p id="testimonial-author-name">Taylor M., 28 years old</p>
                             <span id="testimonial-author-subtext">Graphic Designer • Ontario, Canada</span>
@@ -168,6 +169,8 @@
                     <h3>For Freelancers</h3>
                     <p class="feature-tag">Simplicity &amp; Control</p>
                     <p class="feature-desc">Stay in charge of your income with seamless expense tracking, automated deductions, and smart tax strategies—so you can focus on doing what you love.</p>
+                    
+                
                 </div>
                 <div class="sec8_card sec8_4">
                     <div class="card-icon">
@@ -179,6 +182,8 @@
                     <h3>For Families</h3>
                     <p class="feature-tag">Stability &amp; Security</p>
                     <p class="feature-desc">From budgeting tools to tax-saving insights, we help you plan for the future, maximize refunds, and keep your household finances running smoothly.</p>
+                    
+                  
                 </div>
                 <div class="sec8_card sec8_5">
                     <div class="card-icon">
@@ -191,6 +196,7 @@
                     <h3>For Small Businesses</h3>
                     <p class="feature-tag">Growth &amp; Scalability</p>
                     <p class="feature-desc">Effortless bookkeeping, payroll solutions, and expert-backed tax support—so you can spend less time on finances and more time scaling your business.</p>
+                
                 </div>
             </div>
         </section>
@@ -216,13 +222,134 @@
         </section>
     </main>
 
+
+
+    <div id="customAlert">
+         <div class="appointment-card">
+        <h2 class="title">
+            Book Appointment
+        </h2>
+        <!-- ==========================
+             DOCTOR + DEPARTMENT
+        =========================== -->
+        <div class="doctor-section">
+            <!-- DOCTOR -->
+            <div class="doctor-box">
+                <h3>
+                    Doctor Name
+                </h3>
+                <select
+                    id="doctorSelect"
+                    onchange="selectDoctor()"
+                >
+                    <option value="">
+                        Select Doctor
+                    </option>
+                </select>
+            </div>
+            <!-- DEPARTMENT -->
+            <div class="specialization-box">
+                <h3>
+                    Department
+                </h3>
+                <div
+                    class="specialization-list"
+                    id="specializationList"
+                >
+                    <span class="no-spl">
+                        Select doctor
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- ==========================
+             SELECTED DOCTOR
+        =========================== -->
+
+        <!-- <div
+            class="selected-details"
+            id="selectedDetails"
+        >
+
+            Doctor:
+            <strong>Not Selected</strong>
+
+            <br><br>
+
+            Department:
+            <strong>Not Selected</strong>
+
+        </div>  -->
+        <!-- ==========================
+             CALENDAR + TIME
+        =========================== -->
+        <div class="booking-section">
+            <!-- CALENDAR -->
+            <div class="calendar-box">
+                <div class="calendar-header">
+                    <button
+                        id="prevMonth"
+                        onclick="previousMonth()"
+                    >
+                        ‹
+                    </button>
+                    <span id="monthYear"></span>
+                    <button
+                        onclick="nextMonth()"
+                    >
+                        ›
+                    </button>
+                </div>
+                <div class="weekdays">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div
+                    class="calendar-days"
+                    id="calendarDays"
+                ></div>
+            </div>
+            <!-- TIME DROPDOWN -->
+            <div class="time-box">
+                <h3>
+                    Appointment Time
+                </h3>
+                <select
+                    id="timeSelect"
+                    onchange="selectTime()"
+                >
+                    <option value="">
+                        Select Time
+                    </option>
+                </select>
+            </div>
+        </div>
+        <!-- BOOK -->
+        <button
+            class="book-btn"
+            onclick="bookAppointment()"
+        >
+            Book Appointment
+        </button>
+        <button class="book-btn" onclick="closeAlert()">Close</button>
+    </div>
+        
+    </div>
+
+
+
     <footer>
         <div class="footer-container">
             <div class="section11_1">
                 <h3>Noble Finances</h3>
                 <div class="section11_1_1">
                     <a href="#services" class="footer-link">Services</a>
-                    <button class="footer-btn" type="button">Book An Appointment</button>
+                    <button class="footer-btn" type="button" onclick="showAlert()">Book An Appointment</button>
                 </div>  
             </div>
             <div class="section11_2">
@@ -231,69 +358,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Interactive Testimonials Switcher
-        const testimonialTabs = document.querySelectorAll('.testimonial-tab');
-        const quoteEl = document.getElementById('testimonial-quote');
-        const authorNameEl = document.getElementById('testimonial-author-name');
-        const authorSubtextEl = document.getElementById('testimonial-author-subtext');
-
-        testimonialTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                testimonialTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                if (quoteEl) {
-                    quoteEl.style.opacity = '0';
-                    quoteEl.style.transform = 'translateY(8px)';
-                    setTimeout(() => {
-                        quoteEl.textContent = tab.getAttribute('data-quote');
-                        if (authorNameEl) authorNameEl.textContent = tab.getAttribute('data-author');
-                        if (authorSubtextEl) authorSubtextEl.textContent = tab.getAttribute('data-subtext');
-                        quoteEl.style.opacity = '1';
-                        quoteEl.style.transform = 'translateY(0)';
-                    }, 220);
-                }
-            });
-        });
-
-        // Enable progressive scroll animations
-        document.documentElement.classList.add('js-reveal');
-        
-        const revealElements = document.querySelectorAll('.reveal');
-
-        // Ensure above-the-fold elements are activated immediately on load
-        revealElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
-                el.classList.add('active');
-            }
-        });
-
-        // Intersection Observer for Smooth Scroll Reveal Animations
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.08,
-                rootMargin: '0px 0px -20px 0px'
-            });
-
-            revealElements.forEach(el => {
-                if (!el.classList.contains('active')) {
-                    observer.observe(el);
-                }
-            });
-        } else {
-            // Fallback for older browsers
-            revealElements.forEach(el => el.classList.add('active'));
-        }
-    </script>
+ <script src="script.js"></script>
 </body>
 </html>
