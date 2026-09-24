@@ -1357,7 +1357,7 @@ footer {
         /* ==============================
            SELECTED DETAILS
         ============================== */
-        .selected-details {
+        /* .selected-details {
             margin-top: 15px;
             padding: 12px;
             background: #eef4ff;
@@ -1366,7 +1366,7 @@ footer {
         }
         .selected-details strong {
             color: #2563eb;
-        }
+        } */
         /* ==============================
            CALENDAR + TIME
         ============================== */
@@ -1484,5 +1484,23 @@ footer {
         @media screen and (max-width: 500px) {
             .booking-section {
                 grid-template-columns: 1fr;
+            }
+            .appointment-card{
+                width: 300px;
+            }
+            .doctor-section{
+                width: 250px;
+            }
+            .doctor-box{
+                width: 120px;
+            }
+            .specialization-box{
+                width: 130px;
+            }
+            .calendar-box{
+                width: 250px;
+            }
+            .time-box{
+                width: 200px;
             }
         }
